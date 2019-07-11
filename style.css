@@ -14,3 +14,6 @@ div.first-cell{
   display: inline-block;
   border: 2px solid rgb(238,238,238);
 }
+.err{
+  border: 1.5px solid red;
+}

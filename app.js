@@ -19,9 +19,11 @@ function updateCell(event, spreadsheetRow, index, inputField){
   try{
     spreadsheetRow[index].value = event.target.value;
     inputField.value = spreadsheetRow[index].value;
+    inputField.classList.remove("err");
   } catch(err) {
     alert("Error - not valid expression!");
     inputField.value = "ERROR";
+    inputField.classList.add("err");
   }
 }
 
