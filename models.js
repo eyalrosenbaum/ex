@@ -38,6 +38,6 @@ class Spreadsheet {
   getCell(str) {
     const col = str.charCodeAt(0) - 'A'.charCodeAt(0);
     const row = parseInt(str.slice(1));
-    return this.cells[row, col].content;
+    return this.cells[row][col].content;
   }
 }

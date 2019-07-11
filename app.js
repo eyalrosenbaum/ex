@@ -15,9 +15,10 @@ function createFirstRow() {
   return firstRow;
 }
 
-function updateCell(event, cell, inputField){
+function updateCell(event, spreadsheetRow, index, inputField){
   try{
-    cell.value = event.target.value;
+    spreadsheetRow[index].value = event.target.value;
+    inputField.value = spreadsheetRow[index].value;
   } catch(err) {
     alert("Error - not valid expression!");
     inputField.value = "ERROR";
@@ -35,7 +36,7 @@ function createOrdinaryRow(index, spreadsheetRow) {
   for (let i=1;i<COLS;i++) {
     const cell = document.createElement("input");
     setAttributes(cell, {"class": "cell", "id":`cell_${index}_${i}`, "type":"text"});
-    cell.addEventListener("change", (e) => updateCell(e,spreadsheetRow[i],cell));
+    cell.addEventListener("change", (e) => updateCell(e,spreadsheetRow,i,cell));
     row.appendChild(cell);
   }
   return row;
