@@ -38,8 +38,9 @@ function isLegalExpression(str) {
   }
   const noSpaces = str.replace(/\s+/g, '');
   const splitString = noSpaces.split("+");
-  const regex = RegExp("(([A-Z])([0-9]){1,2})|(([0-9]*\.[0-9]+|([0-9]+)))");
-  return splitString.every(expression => matchRegex(expression, regex) === true).map(res => res);
+  const regex = RegExp("^(([A-Z])([0-9]){1,2})|(([0-9]*\.[0-9]+|([0-9]+)))$");
+  const res =  splitString.every(expression => matchRegex(expression, regex));
+  return res;
 }
 
 function parseComplexExpression(str, spreadsheet) {
