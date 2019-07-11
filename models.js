@@ -2,13 +2,12 @@ class Cell {
   content = "";
   invalid = false;
 
-  constructor(editable, spreadsheet) {
-    this.editable = editable;
+  constructor(spreadsheet) {
     this.spreadsheet = spreadsheet;
   }
 
   get value() {
-    const doubleVal = parseFloat(this.content);
+    return isNaN(parseFloat(this.content)) ? "ERROR" : this.content;
   }
 
   set value(val) {
@@ -18,21 +17,18 @@ class Cell {
       } else {
         this.content = parseComplexExpression(val, this.spreadsheet);
       }
+      this.invalid = false;
+    }
+    else {
+      this.invalid = true;
+      alert("Error - not valid expression!");
     }
   }
 }
 
-class HeaderCell extends Cell {
-  constructor(){
-    super(false);
-  }
-}
-
 class Spreadsheet {
-  cells = new Array([]);
-
-  init() {
-    
+  constructor() {
+    this.cells = new Array([]).fill(new Cell(this));
   }
 
   getCell(str) {

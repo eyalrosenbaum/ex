@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-
+  const spreadsheet = new Spreadsheet();
+  
 })
 
 const COLS = 27;
@@ -10,7 +11,7 @@ function buildSpreadSheet() {
   const spreadSheet = document.createElement("div");
   spreadSheet.setAttribute("id", "spreadsheet");
   /*first row is indexes*/
-  
+
   for (let i = 1; i< ROWS;i++){
     const cell = document.createElement("input");
     cell.setAttribute("type","text");
