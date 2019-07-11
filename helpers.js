@@ -1,3 +1,9 @@
+function setAttributes(el, attrs) {
+  for(var key in attrs) {
+    el.setAttribute(key, attrs[key]);
+  }
+}
+
 function onePointOrLess(str) {
   return (typeof str === "string") && str.split(".").length < 3;
 }
