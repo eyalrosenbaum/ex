@@ -45,13 +45,17 @@ function isLegalExpression(str) {
 function parseComplexExpression(str, spreadsheet) {
   const noSpaces = str.replace(/\s+/g, '');
   const splitString = noSpaces.split("+");
-  const sum = 0;
+  let sum = 0;
   for(let i=0;i<splitString.length;i++){
-    const floatVal = parseFloat(splitString(i));
+    const floatVal = parseFloat(splitString[i]);
     if (!isNaN(floatVal)){
       sum += floatVal;
     } else {
-      sum += parseFloat(spreadsheet.getCell(splitString[i]));
+      const cellValue = parseFloat(spreadsheet.getCell(splitString[i]));
+      if (isNaN(cellValue)){
+        throw new Error();
+      }
+      sum += cellValue;
     }
   }
   return sum;

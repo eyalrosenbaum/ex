@@ -21,7 +21,8 @@ class Cell {
     }
     else {
       this.invalid = true;
-      alert("Error - not valid expression!");
+      this.content = "ERROR";
+      throw(new Error());
     }
   }
 }
@@ -35,8 +36,8 @@ class Spreadsheet {
   }
 
   getCell(str) {
-    const col = str[0] - 'A';
+    const col = str.charCodeAt(0) - 'A'.charCodeAt(0);
     const row = parseInt(str.slice(1));
-    return cells[row, col].content;
+    return this.cells[row, col].content;
   }
 }
