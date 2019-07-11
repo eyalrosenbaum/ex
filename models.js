@@ -27,8 +27,11 @@ class Cell {
 }
 
 class Spreadsheet {
-  constructor() {
-    this.cells = new Array([]).fill(new Cell(this));
+  constructor(rows, cols) {
+    this.cells = new Array(rows);
+    for (let i=0;i <rows;i++){
+      this.cells[i] = new Array(cols).fill(new Cell(this));
+    }
   }
 
   getCell(str) {

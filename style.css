@@ -1,0 +1,16 @@
+input.cell, div.first-cell{
+  height: 15px;
+  width: 50px;
+}
+
+.row{
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+div.first-cell{
+  width: 50px;
+  text-align: center;
+  display: inline-block;
+  border: 2px solid rgb(238,238,238);
+}
